@@ -1,0 +1,281 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #060505;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  background: linear-gradient(-45deg, #111, #222, #333, #222);
+  background-size: 400% 400%;
+  animation: gradientBG 20s ease infinite;
+  overflow: hidden;
+}
+
+.sidebar {
+  position: fixed;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 100;
+}
+
+.sidebar-item {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ccc;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.sidebar-item::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 60px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-20px);
+  background: rgba(20, 20, 20, 0.95);
+  color: #f1f1f1;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  white-space: normal;
+  width: 280px; /* wider box */
+  max-width: 300px;;
+  line-height: 1.5;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1001;
+}
+
+.sidebar-item:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0); /* slide in from left */
+}
+
+
+.dashboard {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  padding: 1rem;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.webcam-container {
+  position: relative;
+  width: 90%;
+  max-width: 810px;
+  max-height: 80vh;
+  height: auto;
+  aspect-ratio: 3/2;
+  background-color: #222;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 24px;
+}
+
+#webcam {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.card-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+.card-peek {
+  position: absolute;
+  transform: scale(0.85);
+  opacity: 0.9;
+  transition: all 0.5s ease;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.card-peek:not(.active):hover {
+  /*Hover effect over the cards*/
+  transform: scale(0.9);
+  opacity: 1;
+}
+
+.card-peek.active {
+  z-index: 15;
+  transform: scale(1.05); /* optional pop */
+  opacity: 1;
+}
+.card1 {
+  top: 50px;
+  left: 50px;
+}
+.card2 {
+  top: 50px;
+  right: 50px;
+}
+.card3 {
+  bottom: 50px;
+  left: 50px;
+}
+.card4 {
+  bottom: 50px;
+  right: 50px;
+}
+.card5 {
+  top: 300px;
+  left: 0;
+}
+.card6 {
+  top: 300px;
+  right: 0;
+}
+
+/* From Uiverse.io by gharsh11032000 */
+/* The switch - the box around the slider */
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+  margin-bottom: 10px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  border: 2px solid #414141;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  left: 0.2em;
+  bottom: 0.2em;
+  background-color: white;
+  border-radius: inherit;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.switch input:checked + .slider {
+  box-shadow: 0 0 20px rgba(165, 0, 226, 0.8);
+  border: 2px solid #c807e6;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(1.5em);
+}
+
+.focus-title {
+  width: 100%;
+  text-align: center;
+  
+  background: linear-gradient(-45deg, #111, #222, #333, #222);
+  background-size: 400% 400%;
+  animation: gradientBG 20s ease infinite;
+  color: #f4f4f4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 10;
+}
+
+.focus-title h1 {
+  font-size: 3rem;
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #8e2de2, #4a00e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowText 4s ease-in-out infinite alternate;
+}
+
+
+@keyframes glowText {
+  from {
+    text-shadow: 0 0 5px rgba(138, 43, 226, 0.3);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+  }
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes togglePulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .card-peek {
+    transform: scale(0.75);
+  }
+  .webcam-container {
+    max-width: 100%;
+  }
+}

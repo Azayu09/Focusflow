@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OnlyPipe Login</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <div class="left-content">
+        <h3>FocusFlow</h3>
+        <h1>Welcome Back</h1>
+        <p>Enter your credentials to access your account.</p>
+        <div class="steps">
+          <div class="step active">
+            <span>1</span> Log into your account
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="form-wrapper">
+        <h2>Login</h2>
+        <p class="subtext">Use your credentials to log in.</p>
+
+        <div id="g_id_onload"
+             data-client_id="85280781303-6qlcu1v1r8cainmfkldn9c2lp2t682v8.apps.googleusercontent.com"
+             data-context="signin"
+             data-ux_mode="popup"
+             data-callback="handleCredentialResponse"
+             data-auto_prompt="false">
+        </div>
+
+        <div class="g_id_signin"
+             data-type="standard"
+             data-shape="rectangular"
+             data-theme="filled_black"
+             data-text="continue_with"
+             data-size="large"
+             data-logo_alignment="left">
+        </div>
+
+        <div class="divider"><span>or</span></div>
+
+        <form onsubmit="handleLogin(event)">
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="eg. johnfrans@gmail.com" required />
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" required />
+          </div>
+
+           <a href="index_fixed_original_layout .html"><button type="submit" class="signup-btn">Login</button></a>
+        </form>
+
+        <p class="login-text">Don't have an account? <a href="signup.html">Sign Up</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleCredentialResponse(response) {
+      const token = response.credential;
+      console.log("Google ID Token:", token);
+      alert("Google sign-in successful!");
+    }
+
+
+  function handleLogin(e) {
+    e.preventDefault(); // prevent reload
+    // TODO: Validate login if needed
+    window.location.href = "index_fixed_original_layout .html";
+  }
+
+
+  </script>
+</body>
+</html>

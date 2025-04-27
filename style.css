@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  body {
+    background-color: #11151c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    display: flex;
+    width: 90%;
+    max-width: 1000px;
+    height: 600px;
+    background-color: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+  
+  .left-panel {
+    flex: 1;
+    background: linear-gradient(to bottom, #c78bff 0%, #3a0c5f 40%, #000 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    color: white;
+    position: relative;
+  }
+  
+  .left-content {
+    text-align: left;
+    max-width: 300px;
+  }
+  
+  .left-content h3 {
+    font-weight: normal;
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  .left-content h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .left-content p {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #ddd;
+  }
+  
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .step {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .step.active {
+    background: white;
+    color: black;
+  }
+  
+  .step span {
+    background-color: #333;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    line-height: 24px;
+  }
+  
+  .step.active span {
+    background-color: black;
+    color: white;
+  }
+  
+  .right-panel {
+    flex: 1;
+    background-color: #0d0d0d;
+    padding: 50px 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .form-wrapper {
+    width: 100%;
+    max-width: 350px;
+    margin: auto;
+  }
+  
+  .form-wrapper h2 {
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  
+  .subtext {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .social-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .google-btn,
+  .github-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #1a1a1a;
+    color: white;
+    border: 1px solid #333;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .google-btn:hover,
+  .github-btn:hover {
+    background-color: #2a2a2a;
+  }
+  
+  button img.icon {
+    height: 18px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  
+  .divider {
+    text-align: center;
+    margin: 25px 0;
+    position: relative;
+    height: 20px;
+  }
+  
+  .divider span {
+    position: relative;
+    z-index: 1;
+    background-color: #0d0d0d;
+    padding: 0 10px;
+    color: #666;
+  }
+  
+  .divider::before {
+    content: "";
+    height: 1px;
+    width: 100%;
+    background-color: #222;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 0;
+  }
+  
+  .name-fields {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  
+  form input {
+    margin-bottom: 12px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #1a1a1a;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 8px;
+    outline: none;
+  }
+  
+  .password-hint {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .signup-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .signup-btn:hover {
+    background-color: #eee;
+  }
+  
+  .login-text {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 20px;
+    color: #999;
+  }
+  
+  .login-text a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .field {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .field label {
+    font-size: 13px;
+    color: #ccc;
+    margin-bottom: 5px;
+    margin-left: 4px;
+  }
+  
+  /* ✅ Checkbox field fix */
+  .checkbox-field {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  
+  .checkbox-field label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: #ccc;
+    line-height: 1.4;
+  }
+  
+  .checkbox-field input[type="checkbox"] {
+    margin-top: 3px;
+    accent-color: #c78bff;
+    width: 16px;
+    height: 16px;
+  }
+  
+  .checkbox-field a {
+    color: #c78bff;
+    text-decoration: underline;
+  }
+  

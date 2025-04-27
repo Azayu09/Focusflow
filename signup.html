@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OnlyPipe Sign Up</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <div class="left-content">
+        <h3>FocusFlow</h3>
+        <h1>Get Started with Us</h1>
+        <p>Complete these easy steps to register your account.</p>
+        <div class="steps">
+          <div class="step active">
+            <span>1</span> Sign up your account
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="form-wrapper">
+        <h2>Sign Up Account</h2>
+        <p class="subtext">Enter your personal data to create your account.</p>
+
+        <div id="g_id_onload"
+             data-client_id="85280781303-6qlcu1v1r8cainmfkldn9c2lp2t682v8.apps.googleusercontent.com"
+             data-context="signup"
+             data-ux_mode="popup"
+             data-callback="handleCredentialResponse"
+             data-auto_prompt="false">
+        </div>
+
+        <div class="g_id_signin"
+             data-type="standard"
+             data-shape="rectangular"
+             data-theme="filled_black"
+             data-text="continue_with"
+             data-size="large"
+             data-logo_alignment="left">
+        </div>
+
+        <div class="divider"><span>or</span></div>
+
+        <form onsubmit="handleSignup(event)">
+
+          <div class="name-fields">
+            <div class="field">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" placeholder="eg. John" name="fn" required />
+            </div>
+            <div class="field">
+              <label for="last-name">Last Name</label>
+              <input type="text" id="last-name" placeholder="eg. Francisco" name="ln" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="eg. johnfrans@gmail.com" name="em" required />
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" name="pa" required />
+            <p class="password-hint">Must be at least 8 characters.</p>
+          </div>
+
+          <div class="field checkbox-field">
+            <label for="terms">
+              <input type="checkbox" id="terms" required />
+              <span>
+                I agree to the 
+                <a href="#" target="_blank">Terms of Service</a> and 
+                <a href="#" target="_blank">Privacy Policy</a>.
+              </span>
+            </label>
+          </div>
+
+          <a href="index_fixed_original_layout .html"><button type="submit" class="signup-btn">Sign Up</button></a>
+        <p class="login-text">Already have an account? <a href="login.html">Log in</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleCredentialResponse(response) {
+      const token = response.credential;
+      console.log("Google ID Token:", token);
+      alert("Google sign-in successful!");
+    }
+
+
+  function handleSignup(e) {
+    e.preventDefault(); // prevent form reload
+    // TODO: Save form data if needed
+    window.location.href = "index_fixed_original_layout .html";
+  }
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard with Webcam & Peeking Cards</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="triial.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+  </head>
+
+  <body>
+
+    <div class="sidebar">
+      <div class="sidebar-item" data-label="Attention span tracker: Because 'I was mentally present' is the new 'the dog ate my homework.">
+        <i class="icon">🧠</i>
+      </div>
+      <div class="sidebar-item" data-label="We've finally answered the age-old question: Yes, your boss CAN tell when you're pretending to nod thoughtfully while playing Candy Crush.">
+        <i class="icon">🍭</i>
+      </div>
+      <div class="sidebar-item" data-label="The 'I'm totally listening' face works on your spouse, not on our algorithm.">
+        <i class="icon">🎭 </i>
+      </div>
+      <div class="sidebar-item" data-label="Warning: This app knows when you're secretly online shopping during the quarterly review">
+        <i class="icon">🛒</i>
+      </div>
+    </div>
+    
+
+    <header class="focus-title">
+      <h1>Focus Flow </h1>
+      
+    </header>
+    <div class="dashboard">
+      <div class="card-wrapper">
+        <div
+          class="card-peek card1"
+          data-glow="#00ffa0"
+          onclick="this.classList.toggle('active')"
+        >
+          <div
+            class="card"
+            style="
+              width: 190px;
+              background: #00ffa0;
+              padding: 1rem;
+              border-radius: 1rem;
+              border: 0.5vmin solid #05060f;
+              box-shadow: 0.4rem 0.4rem #05060f;
+              overflow: hidden;
+              color: black;
+            "
+          >
+            <div
+              class="pricing-block-content"
+              style="display: flex; flex-direction: column; gap: 0.5rem"
+            >
+              <p
+                class="pricing-plan"
+                style="font-size: 1.3rem; font-weight: 700"
+              >
+                Starter
+              </p>
+              <div
+                class="price-value"
+                style="display: flex; font-size: 1.8rem; font-weight: 700"
+              >
+                <p class="price-number">
+                  $<span class="price-integer">0</span>
+                </p>
+                <div id="priceDiscountCent">/mo</div>
+              </div>
+              <div class="pricing-note">free forever</div>
+              <ul
+                class="check-list"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 0.5rem;
+                  margin-top: 0.5rem;
+                "
+              >
+                <li
+                  class="check-list-item"
+                  style="display: flex; align-items: center; gap: 4px"
+                >
+                  ✅ Instant Host Notification
+                </li>
+                <li
+                  class="check-list-item"
+                  style="display: flex; align-items: center; gap: 4px"
+                >
+                  ✅ Support Zoom, Meet & Teams
+                </li>
+                <li
+                  class="check-list-item"
+                  style="display: flex; align-items: center; gap: 4px"
+                >
+                  ✅ Privacy-preserving AI
+                </li>
+                <li
+                  class="check-list-item"
+                  style="display: flex; align-items: center; gap: 4px"
+                >
+                  ✅ Up to 5 Sessions per month
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          class="card-peek card2"
+          data-glow="#f8fbfe"
+          onclick="this.classList.toggle('active')"
+        >
+          <div
+            class="card"
+            style="
+              width: 190px;
+              height: 254px;
+              background-color: #f8fbfe;
+              border-radius: 8px;
+            "
+          >
+            <div
+              class="tools"
+              style="display: flex; align-items: center; padding: 9px"
+            >
+              <div class="circle">
+                <span
+                  class="red box"
+                  style="
+                    background-color: #ff605c;
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                  "
+                ></span>
+              </div>
+              <div class="circle">
+                <span
+                  class="yellow box"
+                  style="
+                    background-color: #ffbd44;
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                  "
+                ></span>
+              </div>
+              <div class="circle">
+                <span
+                  class="green box"
+                  style="
+                    background-color: #00ca4e;
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                  "
+                ></span>
+              </div>
+            </div>
+            <div
+              class="card__content"
+              style="
+                padding: 1rem;
+                font-size: 0.85rem;
+                color: #111;
+                font-family: 'Inter', sans-serif;
+                max-height: 180px;
+                overflow-y: auto;
+                scrollbar-width: thin;
+                scrollbar-color: #999 #eee;
+                border-top: 1px solid #ccc;
+              "
+            >
+              <h3 style="margin-bottom: 0.5rem; font-size: 1rem">
+                📹 How to Use the Blink Detection Feature
+              </h3>
+              <ol style="padding-left: 1rem; line-height: 1.5">
+                <li>Allow access to your webcam when prompted.</li>
+                <li>
+                  Look at the webcam — your eyes will be tracked in real-time.
+                </li>
+                <li>If your eyes blink, it will show “😴 Blink detected!”</li>
+                <li>
+                  If your face is not visible, it will say “😶 Face not
+                  detected”.
+                </li>
+                <li>Status messages appear below the webcam feed.</li>
+                <li>No data is recorded — everything runs in your browser.</li>
+                  
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div
+          class="card-peek card3"
+          data-glow="#3b82f6"
+          onclick="this.classList.toggle('active')"
+        >
+          <div
+            class="cookie-card"
+            style="
+              max-width: 320px;
+              padding: 1rem;
+              background-color: #fff;
+              border-radius: 10px;
+              box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.05);
+            "
+          >
+            <span class="title" style="font-weight: 600; color: rgb(31 41 55)"
+              >🍪 Cookie Notice</span
+            >
+            <p
+              class="description"
+              style="
+                margin-top: 1rem;
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+                color: rgb(75 85 99);
+              "
+            >
+              We use cookies to ensure that we give you the best experience on
+              our website.
+              <a
+                href="#"
+                style="color: rgb(59 130 246); text-decoration: underline"
+                >Read cookies policies</a
+              >.
+            </p>
+            <div
+              class="actions"
+              style="
+                display: flex;
+                justify-content: space-between;
+                margin-top: 1rem;
+              "
+            >
+              <button
+                class="pref"
+                style="
+                  font-size: 0.75rem;
+                  color: rgb(31 41 55);
+                  text-decoration: underline;
+                  background-color: transparent;
+                  border: none;
+                "
+              >
+                Manage your preferences
+              </button>
+              <button
+                class="accept"
+                style="
+                  font-size: 0.75rem;
+                  background-color: rgb(17 24 39);
+                  color: #fff;
+                  border-radius: 0.5rem;
+                  padding: 0.625rem 1rem;
+                  border: none;
+                "
+              >
+                Accept
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="card-peek card5"
+          data-glow="#509af8"
+          onclick="this.classList.toggle('active')"
+        >
+          <div
+            class="info"
+            style="
+              width: 360px;
+              padding: 12px;
+              display: flex;
+              align-items: center;
+              background: #509af8;
+              border-radius: 8px;
+              box-shadow: 0px 0px 5px -3px #111;
+            "
+          >
+            <div class="info__icon" style="margin-right: 8px">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                viewBox="0 0 24 24"
+                fill="white"
+              >
+                <path
+                  d="M12 1.5C6.2 1.5 1.5 6.2 1.5 12s4.7 10.5 10.5 10.5 10.5-4.7 10.5-10.5S17.8 1.5 12 1.5zM12.75 17.06c0 .1-.08.19-.19.19h-1.12c-.1 0-.19-.08-.19-.19v-6.38c0-.1.08-.19.19-.19h1.12c.1 0 .19.08.19.19v6.38zM12 9c-.29 0-.57-.13-.78-.34a1.1 1.1 0 010-1.57A1.1 1.1 0 0112 6.75c.29 0 .57.13.78.34.21.21.34.49.34.78s-.13.57-.34.78A1.1 1.1 0 0112 9z"
+                ></path>
+              </svg>
+            </div>
+            <div
+              class="info__title"
+              style="font-weight: 500; font-size: 14px; color: #fff"
+            >
+              ALERT! Student 'Atharva' is inattentive
+            </div>
+            <div class="info__close" style="margin-left: auto; cursor: pointer">
+              <svg height="20" width="20" fill="white">
+                <path
+                  d="M15.83 5.34l-1.17-1.17-4.66 4.66-4.66-4.66-1.17 1.17 4.66 4.66-4.66 4.66 1.17 1.17 4.66-4.66 4.66 4.66 1.17-1.17-4.66-4.66z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          class="card-peek card6"
+          data-glow="#3f4c6b"
+          onclick="this.classList.toggle('active')"
+        >
+          <div
+            class="card"
+            style="
+              max-width: 360px;
+              display: flex;
+              background: linear-gradient(to right top, #3f4c6b, #606c88);
+              border-radius: 0.5rem;
+              padding: 1rem;
+              color: white;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            "
+          >
+            <div class="icon" style="margin-right: 1rem">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="white"
+                width="32"
+                height="32"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M20 14v3.5C20 20.56 16 20.5 12 20.5S4 20.56 4 17.5V14m8 1V3m0 12l-4-4m4 4l4-4"
+                />
+              </svg>
+            </div>
+            <div class="content">
+              <div
+                class="title"
+                style="font-size: 1rem; font-weight: bold; color: #fff"
+              >
+                Good news Mac users!
+              </div>
+              <div class="desc" style="margin-top: 0.5rem; color: #ccc">
+                ATTENTION DASHBOARD COMING SOON!!!!
+              </div>
+              <div
+                class="actions"
+                style="display: flex; gap: 0.5rem; margin-top: 0.75rem"
+              >
+                <a
+                  href="#"
+                  class="download"
+                  style="
+                    background: #284385;
+                    padding: 0.5rem 1rem;
+                    border-radius: 0.5rem;
+                    color: white;
+                    font-weight: bold;
+                    text-decoration: none;
+                  "
+                  >Early Access</a
+                >
+                <a
+                  href="#"
+                  class="notnow"
+                  style="
+                    background: #606c88;
+                    padding: 0.5rem 1rem;
+                    border-radius: 0.5rem;
+                    color: white;
+                    text-decoration: none;
+                  "
+                  >Not now</a
+                >
+              </div>
+            </div>
+            <button
+              class="close"
+              style="
+                margin-left: auto;
+                background: transparent;
+                border: none;
+                color: white;
+              "
+            >
+              <svg
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                width="20"
+                height="20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="webcam-container">
+        <video
+          id="webcam"
+          autoplay
+          playsinline
+          muted
+          height="90%"
+          width="90%"
+          style="width: 100%; border-radius: 20px"
+        ></video>
+
+        <canvas
+          id="overlay"
+          style="position: absolute; top: 0; left: 0"
+        ></canvas>
+      </div>
+    </div>
+    <!-- From Uiverse.io by gharsh11032000 -->
+    <label class="switch">
+      <input type="checkbox" id="toggleScript" />
+      <span class="slider"></span>
+    </label>
+    <script>
+      const video = document.getElementById("webcam");
+      const canvas = document.getElementById("overlay");
+      const ctx = canvas.getContext("2d");
+
+      document
+        .getElementById("toggleScript")
+        .addEventListener("change", function () {
+          if (this.checked) {
+            fetch("http://localhost:5050/start", { method: "POST" })
+              .then((res) => console.log("✅ Script started"))
+              .catch((err) => console.error("❌ Failed to start script", err));
+          } else {
+            fetch("http://localhost:5050/stop", { method: "POST" })
+              .then((res) => console.log("🛑 Script stopped"))
+              .catch((err) => console.error("❌ Failed to stop script", err));
+          }
+        });
+
+      // Start the webcam
+      async function startCamera() {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+          });
+          video.srcObject = stream;
+        } catch (err) {
+          console.error("Webcam access error:", err);
+        }
+      }
+
+      // EAR Calculation
+      function calculateEAR(eye) {
+        const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+        const A = dist(eye[1], eye[5]);
+        const B = dist(eye[2], eye[4]);
+        const C = dist(eye[0], eye[3]);
+        return (A + B) / (2.0 * C);
+      }
+
+      // Setup MediaPipe FaceMesh
+      const faceMesh = new FaceMesh({
+        locateFile: (file) =>
+          `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
+      });
+
+      faceMesh.setOptions({
+        maxNumFaces: 1,
+        refineLandmarks: true,
+        minDetectionConfidence: 0.5,
+        minTrackingConfidence: 0.5,
+      });
+
+      // Callback when results are received
+      faceMesh.onResults((results) => {
+        canvas.width = video.offsetWidth;
+        canvas.height = video.offsetHeight;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (
+          !results.multiFaceLandmarks ||
+          results.multiFaceLandmarks.length === 0
+        ) {
+          ctx.fillStyle = "white";
+          ctx.font = "20px Inter";
+          ctx.fillText("😶 Face not detected", 10, 30);
+          return;
+        }
+
+        const landmarks = results.multiFaceLandmarks[0];
+        // Get canvas size based on actual video display
+        canvas.width = video.offsetWidth;
+        canvas.height = video.offsetHeight;
+
+        // Extract tight facial landmarks
+        const faceIndices = [10, 152, 234, 454, 67, 297, 284, 61, 291];
+        const facePoints = faceIndices.map((i) => landmarks[i]);
+
+        // Scale coordinates to canvas size
+        const xs = facePoints.map((p) => p.x * canvas.width);
+        const ys = facePoints.map((p) => p.y * canvas.height);
+
+        // Bounding box
+        const minX = Math.min(...xs);
+        const minY = Math.min(...ys);
+        const maxX = Math.max(...xs);
+        const maxY = Math.max(...ys);
+
+        // Optional padding
+        const padding = 10;
+        const x = Math.max(minX - padding, 0);
+        const y = Math.max(minY - padding, 0);
+        const width = Math.min(maxX - minX + padding * 2, canvas.width - x);
+        const height = Math.min(maxY - minY + padding * 2, canvas.height - y);
+
+        // Draw bounding box
+        ctx.strokeStyle = "#00FF00";
+        ctx.lineWidth = 3;
+        ctx.strokeRect(x, y, width, height);
+
+        // EAR Calculation
+        const rightEye = [
+          landmarks[33],
+          landmarks[160],
+          landmarks[158],
+          landmarks[133],
+          landmarks[153],
+          landmarks[144],
+        ];
+        const ear = calculateEAR(rightEye);
+
+        // Display EAR
+        ctx.fillStyle = "white";
+        ctx.font = "20px Inter";
+        ctx.fillText("EAR: " + ear.toFixed(3), 10, 30);
+
+        // Blink Detection
+        if (ear < 0.21) {
+          ctx.fillStyle = "yellow";
+          ctx.fillText("😴 Blink detected!", 10, 60);
+        }
+      });
+
+      const camera = new Camera(video, {
+        onFrame: async () => {
+          await faceMesh.send({ image: video });
+        },
+        width: 640,
+        height: 480,
+      });
+
+      // Initialize
+      startCamera().then(() => camera.start());
+    </script>
+  </body>
+</html>
